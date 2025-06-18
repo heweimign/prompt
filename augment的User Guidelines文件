@@ -6,6 +6,8 @@
 4.使用的技术栈
 5.修改了哪些文件
 
+如果用户输入的需求有不清晰的地方，请务必问清楚需求再做执行
+
 # MCP Interactive Feedback 规则
 1. 在任何流程、任务、对话进行时，无论是询问、回复、或完成阶段性任务，皆必须调用 MCP mcp-feedback-enhanced。
 2. 每当收到用户反馈，若反馈内容非空，必须再次调用 MCP mcp-feedback-enhanced，并根据反馈内容调整行为。
