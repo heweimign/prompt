@@ -21,6 +21,23 @@
       "command": "npx",
       "args": ["@agentdeskai/browser-tools-mcp@latest"],
       "enabled": true
-    	}
+    	},"servers": {
+      "mysql": {
+            "type": "stdio",
+            "command": "uvx",
+            "args": [
+                "--from",
+                "mysql-mcp-server",
+                "mysql_mcp_server"
+            ],
+      "env": {
+        "MYSQL_HOST": "10.81.9.154",
+        "MYSQL_PORT": "3306",
+        "MYSQL_USER": "readonly_user",
+        "MYSQL_PASSWORD": "Test@2022Abc",
+        "MYSQL_DATABASE": "agent_factory"
+      }
+    }
+  }
 	}
   }
