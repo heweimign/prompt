@@ -1,43 +1,65 @@
 {
-	"mcpServers": {
-		"promptx": {
-			"command": "npx",
-			"args": ["-y", "-f", "dpml-prompt@snapshot", "mcp-server"]
-		},
-	  "interactive-feedback-mcp": {
-		"command": "uv",
-		"args": [
-		  "--directory",
-		  "C:\\Users\\hwm\\PycharmProjects\\interactive-feedback-mcp",
-		  "run",
-		  "server.py"
-		],
-		"timeout": 600,
-		"autoApprove": [
-		  "interactive_feedback"
-		]
-	  },
-	  "browser-tools": {
-      "command": "npx",
-      "args": ["@agentdeskai/browser-tools-mcp@latest"],
-      "enabled": true
-    	},"servers": {
-      "mysql": {
-            "type": "stdio",
-            "command": "uvx",
+    "mcpServers": {
+        "promptx": {
+            "command": "npx",
             "args": [
-                "--from",
-                "mysql-mcp-server",
-                "mysql_mcp_server"
-            ],
-      "env": {
-        "MYSQL_HOST": "10.81.9.154",
-        "MYSQL_PORT": "3306",
-        "MYSQL_USER": "readonly_user",
-        "MYSQL_PASSWORD": "Test@2022Abc",
-        "MYSQL_DATABASE": "agent_factory"
-      }
+                "-y",
+                "-f",
+                "dpml-prompt@snapshot",
+                "mcp-server"
+            ]
+        }
+        
     }
-  }
-	}
-  }
+}
+
+{
+    "servers": {
+            "mysql": {
+                "type": "stdio",
+                "command": "uvx",
+                "args": [
+                    "--from",
+                    "mysql-mcp-server",
+                    "mysql_mcp_server"
+                ],
+                "env": {
+                    "MYSQL_HOST": "10.81.9.154",
+                    "MYSQL_PORT": "3306",
+                    "MYSQL_USER": "readonly_user",
+                    "MYSQL_PASSWORD": "Test@2022Abc",
+                    "MYSQL_DATABASE": "agent_factory"
+                }
+            }
+        }
+}
+
+
+
+{
+    "browser-tools": {
+            "command": "npx",
+            "args": [
+                "@agentdeskai/browser-tools-mcp@latest"
+            ],
+            "enabled": true
+        }
+}
+
+        
+{
+    "interactive-feedback-mcp": {
+            "command": "uv",
+            "args": [
+                "--directory",
+                "C:\\Users\\hwm\\PycharmProjects\\interactive-feedback-mcp",
+                "run",
+                "server.py"
+            ],
+            "timeout": 600,
+            "autoApprove": [
+                "interactive_feedback"
+            ]
+        }
+}
+        
