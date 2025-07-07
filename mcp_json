@@ -1,16 +1,17 @@
 {
-    "mcpServers": {
-        "promptx": {
-            "command": "npx",
-            "args": [
-                "-y",
-                "-f",
-                "dpml-prompt@snapshot",
-                "mcp-server"
-            ]
-        }
-        
+  "mcpServers": {
+    "promptx": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "-f",
+        "--registry",
+        "https://registry.npmjs.org",
+        "dpml-prompt@beta",
+        "mcp-server"
+      ]
     }
+  }
 }
 
 {
