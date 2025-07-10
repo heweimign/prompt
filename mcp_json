@@ -7,7 +7,7 @@
         "-f",
         "--registry",
         "https://registry.npmjs.org",
-        "dpml-prompt@beta",
+        "dpml-prompt@alpha",
         "mcp-server"
       ]
     }
