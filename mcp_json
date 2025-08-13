@@ -114,3 +114,20 @@
     }
   }
 }
+
+{
+  "mcpServers": {
+    "shrimp-task-manager": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-shrimp-task-manager",
+        "--dataDir",
+        "D:\\mcpServer\\ShrimpData",
+        "--gui",
+        "--port",
+        "3000"
+      ]
+    }
+  }
+}
