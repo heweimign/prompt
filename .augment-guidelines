@@ -1,0 +1,201 @@
+# 项目开发规范与指导原则
+
+## 后端接口设计规范
+
+### 1. 枚举值返回原则
+
+**原则名称**：枚举值双字段返回原则
+
+**目的**：提高前后端协作效率，减少前端维护枚举映射关系的复杂度，避免额外的字典查询接口调用。
+
+**核心规范**：
+- 当接口返回包含枚举值的字段时，必须同时返回该枚举值对应的显示名称
+- 原始枚举字段保持不变（用于业务逻辑判断）
+- 新增一个以"Name"或"Text"为后缀的字段返回显示名称（用于前端展示）
+- 字段命名采用驼峰命名法
+
+**命名规则**：
+- 原字段 + "Name"：适用于简短的显示名称
+- 原字段 + "Text"：适用于较长的描述性文本
+
+**示例**：
+```json
+{
+  "status": 0,
+  "statusName": "待审核",
+  "resourceFormat": 1,
+  "resourceFormatText": "数据库",
+  "appArea": "FINANCE",
+  "appAreaName": "金融",
+  "usageDurationUnit": "DAY",
+  "usageDurationUnitName": "天"
+}
+```
+
+**适用范围**：
+- 所有返回枚举值的接口
+- 包括但不限于：状态字段、类型字段、分类字段、单位字段等
+- 列表接口和详情接口均需遵循
+
+**实施要求**：
+- 新开发的接口必须遵循此原则
+- 现有接口在迭代时逐步改造
+- 接口文档必须明确标注枚举值与显示名称的对应关系
+
+### 2. 接口命名规范
+
+**原则名称**：接口参数驼峰命名原则
+
+**目的**：统一前后端接口规范，提高代码可读性和维护性，遵循Java开发最佳实践。
+
+**核心规范**：
+- 所有接口的入参和出参字段必须使用驼峰命名法（camelCase）
+- 首字母小写，后续单词首字母大写
+- 避免使用下划线分隔符
+
+**示例**：
+```json
+// ✅ 正确的驼峰命名
+{
+  "resourceName": "用户数据",
+  "createTime": "2024-01-01",
+  "appAreaCode": "FINANCE",
+  "usageDurationUnit": "DAY"
+}
+
+// ❌ 错误的下划线命名
+{
+  "resource_name": "用户数据",
+  "create_time": "2024-01-01",
+  "app_area_code": "FINANCE",
+  "usage_duration_unit": "DAY"
+}
+```
+
+**适用范围**：
+- 所有REST API接口的请求参数
+- 所有REST API接口的响应字段
+- JSON格式的数据传输
+
+**实施要求**：
+- 新开发的接口必须遵循此原则
+- 现有接口在迭代时逐步改造为驼峰命名
+- 数据库字段映射时使用@JsonProperty或@Column注解处理
+
+### 3. 接口返回类型规范
+
+**原则名称**：接口返回类型具体化原则
+
+**目的**：提供清晰的API文档，增强类型安全性，便于前端开发理解接口结构。
+
+**核心规范**：
+- 禁止使用模糊的Object类型作为接口返回类型
+- 必须为每个接口创建对应的具体VO类
+- 所有接口返回类型必须使用明确的泛型类型
+
+**命名规则**：
+- 资源详情 → ResourceDetailVO
+- 集市列表项 → ResourceMarketVO
+- 购物车项 → CartItemVO
+- 订单详情 → OrderDetailVO
+- 场景信息 → SceneVO
+
+**示例**：
+```java
+// ❌ 错误的模糊类型
+public R<Object> getResourceDetail(Long resourceId) { }
+public R<List<Object>> getCartList() { }
+
+// ✅ 正确的具体类型
+public R<ResourceDetailVO> getResourceDetail(Long resourceId) { }
+public R<List<CartItemVO>> getCartList() { }
+```
+
+**VO类要求**：
+- 包含接口文档中要求的所有字段
+- 实现枚举值双字段返回（如status + statusName）
+- 添加@ApiModel和@ApiModelProperty注解
+- 遵循驼峰命名法
+
+**适用范围**：
+- 所有Controller接口的返回类型
+- 包括分页数据、列表数据、详情数据等
+
+**实施要求**：
+- 新开发的接口必须遵循此原则
+- 现有接口在迭代时逐步改造
+- VO类必须放在对应模块的vo包下
+
+### 4. 类注释模板规范
+
+**原则名称**：统一类注释模板原则
+
+**目的**：统一代码注释格式，提高代码可读性和维护性，便于团队协作。
+
+**核心规范**：
+- 所有新创建的类必须使用统一的注释模板
+- 注释模板必须包含作者、版本、描述、日期等关键信息
+
+**注释模板**：
+```java
+/**
+ * @author 何炜明
+ * @version 1.0
+ * @description: {此处描述本类的作用}
+ * @date 当前的日期时间，形如2025/1/17 16:03
+ */
+```
+
+**适用范围**：
+- 所有新创建的Java类
+- 包括Controller、Service、VO、Request、Entity等所有类型
+
+**实施要求**：
+- 新创建的类必须遵循此模板
+- 描述部分要准确说明类的作用和职责
+- 日期格式统一为yyyy/M/d H:mm
+
+---
+
+## 编译与构建规范
+
+### 5. 模块化编译原则
+
+**原则名称**：模块化编译优化原则
+
+**目的**：提高开发效率，减少编译时间，避免因无关模块编译错误影响开发进度。
+
+**核心规范**：
+- 开发tdm-trade模块时，只编译tdm-trade模块及其依赖
+- 避免编译整个项目，特别是存在编译问题的camelserver等模块
+- 使用Maven的模块化编译参数进行精确编译
+
+**编译命令**：
+```bash
+# 编译tdm-trade模块及其依赖
+mvn clean compile -DskipTests -pl uni-data-brain-modules/uni-data-brain-modules-tdm-trade -am
+
+# 如果需要打包
+mvn clean package -DskipTests -pl uni-data-brain-modules/uni-data-brain-modules-tdm-trade -am
+```
+
+**参数说明**：
+- `-pl`：指定要构建的模块
+- `-am`：同时构建指定模块的依赖模块
+- `-DskipTests`：跳过测试，加快编译速度
+
+**适用场景**：
+- tdm-trade模块的功能开发和调试
+- 快速验证代码编译是否通过
+- 避免因其他模块问题影响当前开发
+
+**实施要求**：
+- 开发tdm-trade相关功能时必须使用此编译方式
+- 编译成功后再考虑整体项目编译
+- 遇到编译错误时优先检查tdm-trade模块本身
+
+---
+
+## 其他开发规范
+
+（待补充其他项目规范）
