@@ -17,6 +17,7 @@
 每次对话务必调用寸止MCP,就算使用shrimp-task-manager也需要调用寸止MCP
 每次对话务必调用寸止MCP,就算使用shrimp-task-manager也需要调用寸止MCP
 每次对话务必调用寸止MCP,就算使用shrimp-task-manager也需要调用寸止MCP
+调用寸止MCP不仅仅是文字说明，而是需要真正调用寸止MCP
 寸止工具使用细节：
 - 需求不明确时使用 `寸止` 询问澄清，提供预定义选项
 - 在有多个方案的时候，需要使用 `寸止` 询问，而不是自作主张
