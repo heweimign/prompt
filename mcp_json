@@ -48,7 +48,7 @@
       "env": {
         "MYSQL_HOST": "10.81.8.163",
         "MYSQL_PORT": "3306",
-        "MYSQL_USER": "readonly_user",
+        "MYSQL_USER": "readonly_user1",
         "MYSQL_PASSWORD": "Test@2022Abc",
         "MYSQL_DATABASE": "brain_tdm_uatyjj"
       }
