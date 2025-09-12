@@ -50,7 +50,7 @@
         "MYSQL_PORT": "3306",
         "MYSQL_USER": "readonly_user",
         "MYSQL_PASSWORD": "Test@2022Abc",
-        "MYSQL_DATABASE": "brain_tdm_uatyjj_ggsjzy"
+        "MYSQL_DATABASE": "brain_tdm_uatyjj"
       }
     }
   }
