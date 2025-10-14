@@ -151,3 +151,22 @@
     }
   }
 }
+
+一个替代所有
+{
+  "mcpServers": {
+    "mcp-router": {
+      "command": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:\\Users\\hwm\\AppData\\Roaming\\npm\\node_modules\\mcpr-cli\\dist\\mcpr.js",
+        "connect"
+      ],
+      "env": {
+        "SystemRoot": "C:\\WINDOWS",
+        "COMSPEC": "C:\\WINDOWS\\system32\\cmd.exe",
+        "MCPR_TOKEN": "mcpr_7SLlZtejz9wLuMG4GYViVkKqGHa9OOMe"
+      }
+    }
+  }
+}
+
