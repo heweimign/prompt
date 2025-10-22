@@ -170,3 +170,95 @@
   }
 }
 
+---------------------------------
+以下一个json包含多个
+
+{
+  "mcpServers": {
+    "promptx": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "-f",
+        "--registry",
+        "https://registry.npmjs.org",
+        "dpml-prompt@alpha",
+        "mcp-server"
+      ],
+      "alwaysAllow": [
+        "action",
+        "discover",
+        "project",
+        "recall",
+        "remember",
+        "toolx"
+      ]
+    },
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ],
+      "alwaysAllow": [
+        "resolve-library-id",
+        "get-library-docs"
+      ]
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "alwaysAllow": [
+        "sequentialthinking"
+      ]
+    },
+    "deepwiki-sse": {
+      "url": "https://mcp.deepwiki.com/sse",
+      "alwaysAllow": [
+        "read_wiki_structure",
+        "read_wiki_contents",
+        "ask_question"
+      ]
+    },
+    "寸止": {
+      "command": "寸止",
+      "alwaysAllow": [
+        "zhi",
+        "ji"
+      ]
+    },
+    "shrimp-task-manager": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-shrimp-task-manager",
+        "--dataDir",
+        "D:\\mcpServer\\ShrimpData",
+        "--gui",
+        "--port",
+        "3000"
+      ],
+      "alwaysAllow": [
+        "zhi",
+        "plan_task",
+        "analyze_task",
+        "reflect_task",
+        "split_tasks",
+        "list_tasks",
+        "execute_task",
+        "verify_task",
+        "delete_task",
+        "clear_all_tasks",
+        "update_task",
+        "query_task",
+        "get_task_detail",
+        "process_thought",
+        "init_project_rules",
+        "research_mode"
+      ]
+    }
+  }
+}
