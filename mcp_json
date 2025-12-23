@@ -262,3 +262,24 @@
     }
   }
 }
+
+{
+    "servers": {
+            "mysql": {
+                "type": "stdio",
+                "command": "uvx",
+                "args": [
+                    "--from",
+                    "mysql-mcp-server",
+                    "mysql_mcp_server"
+                ],
+                "env": {
+                    "MYSQL_HOST": "10.19.64.84",
+                    "MYSQL_PORT": "3306",
+                    "MYSQL_USER": "readonly_user1",
+                    "MYSQL_PASSWORD": "Test@2022Abc",
+                    "MYSQL_DATABASE": "liteflow_demo"
+                }
+            }
+        }
+}
