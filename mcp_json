@@ -56,6 +56,21 @@
   }
 }
 
+    "mcp-mysql": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@benborla29/mcp-server-mysql"
+      ],
+      "env": {
+        "MYSQL_HOST": "10.81.8.163",
+        "MYSQL_PORT": "3306",
+        "MYSQL_USER": "readonly_user1",
+        "MYSQL_PASS": "Test@2022Abc",
+        "MYSQL_DB": "brain_tdm_uatyjj"
+      }
+    }
+
 
 {
     "browser-tools": {
