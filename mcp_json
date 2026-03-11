@@ -71,6 +71,20 @@
       }
     }
 
+-- 1) 创建用户（如果已存在则不会报错）
+CREATE USER IF NOT EXISTS 'readonly_user1'@'%' IDENTIFIED BY 'Test@2022Abc';
+
+-- 2) 为了确保“只读”，先移除可能已有的权限
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'readonly_user1'@'%';
+
+-- 3) 只授予读取权限
+GRANT SELECT, SHOW VIEW ON `sjtq_business_node_dev`.* TO 'readonly_user1'@'%';
+
+-- 4) 刷新权限
+FLUSH PRIVILEGES;
+
+SHOW GRANTS FOR 'readonly_user1'@'%';
+
 
 {
     "browser-tools": {
